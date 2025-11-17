@@ -147,54 +147,6 @@ def login(role):
         pause()
         return None
 
-def signup():
-    clear_screen(); print("--- 회원가입 ---")
-    while True:
-        user_id = input("사용할 아이디: ")
-        if user_id in data.users: print("이미 존재하는 아이디입니다.")
-        else: break
-            
-    password = input("사용할 비밀번호: ")
-    name = input("이름: ")
-
-    while True:
-        role_choice = input("역할을 선택하세요 (1: 학생, 2: 교수, 3: 행정직원): ")
-        if role_choice == '1':
-            role = 'student'
-            student_id = input("학번: ")
-            major = input("전공: ")
-            data.students[user_id] = {
-                'name': name, 'student_id': student_id,
-                'major': major, 'courses': [], 'status': '재학' # 학적 상태 추가
-            }
-            save_students()
-            break
-        elif role_choice == '2':
-            role = 'professor'
-            professor_id = input("교번: ")
-            department = input("소속 학과: ")
-            data.professors[user_id] = {
-                'name': name, 'professor_id': professor_id,
-                'department': department, 'courses_taught': []
-            }
-            save_professors()
-            break
-        elif role_choice == '3':
-            role = 'admin'
-            admin_id = input("직원번호: ")
-            department = input("소속 부서: ")
-            data.admins[user_id] = {
-                'name': name, 'admin_id': admin_id,
-                'department': department
-            }
-            save_admins()
-            break
-        else: print("잘못된 선택입니다. 1, 2, 3 중에서 선택해주세요.")
-
-    data.users[user_id] = {'password': password, 'role': role}
-    save_users()
-    print(f"\n회원가입이 완료되었습니다. (아이디: {user_id})")
-
 def view_notices():
     """(신규) 공통 공지사항 조회 기능"""
     clear_screen()

@@ -18,8 +18,7 @@ def main():
         print("1. 학생")
         print("2. 교수")
         print("3. 행정직원")
-        print("4. 회원가입")
-        print("5. 종료")
+        print("4. 종료")
         print("--------------------------------")
         choice = input("메뉴 선택: ")
 
@@ -42,10 +41,6 @@ def main():
                 admin_handler.admin_menu()
 
         elif choice == '4':
-            common.signup()
-            common.pause()
-
-        elif choice == '5':
             print("프로그램을 종료합니다. 모든 변경사항이 저장되었습니다.")
             break
 

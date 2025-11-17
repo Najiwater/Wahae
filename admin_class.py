@@ -16,9 +16,10 @@ class Admin:
             print("2. 강좌 삭제")
             print("3. 공지사항 관리 (신규)")
             print("4. 학적 변동 신청 관리 (신규)")
-            print("5. 전체 목록 조회 (학생/교수/강좌)")
-            print("6. 공지사항 조회 (공통)")
-            print("7. 내 정보 조회/수정 (비밀번호 변경)")
+            print("5. 사용자 관리 (계정 추가)")
+            print("6. 전체 목록 조회 (학생/교수/강좌)")
+            print("7. 공지사항 조회 (공통)")
+            print("8. 내 정보 조회/수정 (비밀번호 변경)")
             print("0. 로그아웃")
             choice = input("메뉴 선택: ")
 
@@ -26,12 +27,89 @@ class Admin:
             elif choice == '2': self.delete_course()
             elif choice == '3': self.manage_notices()
             elif choice == '4': self.process_academic_requests()
-            elif choice == '5': self.view_all_lists_menu()
-            elif choice == '6': common.view_notices()
-            elif choice == '7': self.my_profile_menu()
+            elif choice == '5': self.manage_users_menu()
+            elif choice == '6': self.view_all_lists_menu()
+            elif choice == '7': common.view_notices()
+            elif choice == '8': self.my_profile_menu()
             elif choice == '0': print("로그아웃합니다."); common.pause(); break
             else: print("잘못된 입력입니다."); common.pause()
+    def manage_users_menu(self):
+        """(신규) 5. 사용자 관리 서브메뉴"""
+        common.clear_screen()
+        print("--- 사용자 관리 ---")
+        print("1. 학생 계정 추가")
+        print("2. 교수 계정 추가")
+        print("3. 행정직원 계정 추가")
+        print("0. 뒤로가기")
+        choice = input("선택: ")
+        
+        if choice == '1':
+            self.add_user('student')
+        elif choice == '2':
+            self.add_user('professor')
+        elif choice == '3':
+            self.add_user('admin')
+        else:
+            return
 
+    def add_user(self, role):
+        """(신규) 사용자 추가 공통 함수 (기존 signup 로직 이전)"""
+        common.clear_screen()
+        print(f"--- {role.upper()} 계정 추가 ---")
+        
+        while True:
+            user_id = input(f"사용할 아이디: ")
+            if user_id in data.users:
+                print("이미 존재하는 아이디입니다.")
+            elif not user_id:
+                print("아이디는 비워둘 수 없습니다.")
+            else:
+                break
+                
+        password = input(f"사용할 초기 비밀번호 (미입력 시 '1234'): ")
+        if not password:
+            password = "1234"
+            
+        name = input(f"이름: ")
+
+        # data.users에 기본 정보 추가
+        data.users[user_id] = {'password': password, 'role': role}
+        
+        # 역할(role)에 따라 상세 정보 추가
+        if role == 'student':
+            student_id = input("학번: ")
+            major = input("전공: ")
+            data.students[user_id] = {
+                'name': name, 'student_id': student_id,
+                'major': major, 'courses': [], 'status': '재학'
+            }
+            common.save_students()
+            print(f"\n[학생] {name}({user_id})님 계정이 추가되었습니다.")
+        
+        elif role == 'professor':
+            professor_id = input("교번: ")
+            department = input("소속 학과: ")
+            data.professors[user_id] = {
+                'name': name, 'professor_id': professor_id,
+                'department': department, 'courses_taught': []
+            }
+            common.save_professors()
+            print(f"\n[교수] {name}({user_id})님 계정이 추가되었습니다.")
+
+        elif role == 'admin':
+            admin_id = input("직원번호: ")
+            department = input("소속 부서: ")
+            data.admins[user_id] = {
+                'name': name, 'admin_id': admin_id,
+                'department': department
+            }
+            common.save_admins()
+            print(f"\n[행정직원] {name}({user_id})님 계정이 추가되었습니다.")
+        
+        # 공통 users.json 파일 저장
+        common.save_users()
+        common.pause()
+        
     def my_profile_menu(self):
         common.clear_screen()
         print("--- 내 정보 관리 ---")

@@ -1,1 +1,7 @@
-{}
+{
+"admin": {
+        "name": "조은혜",
+        "admin_id": "A001",
+        "department": "행정"
+    }
+}
