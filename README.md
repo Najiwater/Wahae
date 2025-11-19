@@ -6,5 +6,9 @@
 ## 🐧 UML
 ## <img width="614" height="632" alt="image" src="https://github.com/user-attachments/assets/6a680faf-0d9d-4bc9-b4b7-2de48f6185c5" />
 
+## 🐧 역할
+## <img width="575" height="363" alt="image" src="https://github.com/user-attachments/assets/89f99f65-2eef-4b53-a01f-5ace0e689f69" />
+
+
 ## ♨️ 팀원 : 나지수 임지후 정종빈 김재영 송제용 장현준 최혁
 
