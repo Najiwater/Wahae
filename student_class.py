@@ -15,7 +15,7 @@ class Student:
             common.clear_screen()
             print(f"--- 학생 메뉴 ({self.info['name']}님 | {self.info['status']}) ---")
             print("1. 수강 신청 (시간 충돌 감지)")
-            print("2. 수강 철회")
+            print("2. 학적 정보 및 성적/학점 확인")
             print("3. 내 시간표/수강과목 조회")
             print("4. 강의 상세 조회 (계획서, 주차별 내용)")
             print("5. 성적 조회 (GPA 계산)")
@@ -26,7 +26,7 @@ class Student:
             choice = input("메뉴 선택: ")
 
             if choice == '1': self.register_course()
-            elif choice == '2': self.drop_course()
+            elif choice == '2': self.view_academics_menu()
             elif choice == '3': self.view_my_timetable()
             elif choice == '4': self.view_course_details()
             elif choice == '5': self.view_grades()
@@ -260,4 +260,100 @@ class Student:
         common.save_academic_requests()
         
         print(f"{req_type} 신청이 완료되었습니다. (관리자 승인 대기)")
+        common.pause()
+    def view_academics_menu(self):
+        """학생의 학점 확인, 졸업 요건 확인, 성적 조회 시스템을 통합하는 메뉴"""
+        while True:
+            common.clear_screen()
+            print("--- 학적 정보 및 성적 조회 시스템 ---")
+            print("1. 학점 및 GPA 확인 (학점 확인)")
+            print("2. 졸업 요건 달성도 확인")
+            print("3. 성적 조회 시스템 (과목별 상세 성적)")
+            print("0. 뒤로가기")
+            choice = input("선택: ")
+            
+            if choice == '1': self.check_credits() 
+            elif choice == '2': self.check_graduation_requirements()
+            elif choice == '3': self.view_grades() # 기존 함수명을 유지하거나 수정
+            elif choice == '0': break
+            else: print("잘못된 입력입니다."); common.pause()
+
+    def check_credits(self):
+        """(신규) 학점 확인 기능 (GPA, 총 이수 학점 표시)"""
+        common.clear_screen()
+        print("--- 학점 및 GPA 확인 ---")
+        
+        # common_module의 GPA 계산 함수 사용
+        gpa, total_earned_credits = common.calculate_gpa(self.user_id) 
+        
+        print(f"\n** {self.info['name']} 학생 정보 **")
+        print(f"현재 학적 상태: {self.info.get('status', '재학')}")
+        print(f"총 평점 평균 (GPA): {gpa:.2f} / 4.5")
+        print(f"총 이수 학점: {total_earned_credits} 학점")
+        
+        common.pause()
+        
+    def check_graduation_requirements(self):
+        """(신규) 졸업 요건 달성도 확인 기능"""
+        common.clear_screen()
+        print("--- 졸업 요건 달성도 확인 ---")
+        
+        # common_module에 정의된 상수 사용
+        MIN_CREDITS = common.MIN_GRADUATION_CREDITS
+        MIN_GPA = 2.0 # 최소 GPA 요건
+        
+        # common_module의 GPA 계산 함수를 재사용
+        gpa, earned_credits = common.calculate_gpa(self.user_id) 
+
+        print(f"** {self.info['major']} 전공 졸업 요건 **")
+        print(f"1. 최소 이수 학점: {MIN_CREDITS} 학점")
+        print(f"2. 최소 평점 평균 (GPA): {MIN_GPA} / 4.5")
+        print("3. 기타 요건: 토익, 졸업 논문 등 (생략)")
+        print("-" * 30)
+        
+        # 학점 요건 확인
+        is_credit_met = earned_credits >= MIN_CREDITS
+        credit_status = f"현재 이수 학점: {earned_credits} 학점 ({' 충족' if is_credit_met else ' 미충족', earned_credits - MIN_CREDITS} 학점 부족)"
+        
+        # GPA 요건 확인
+        is_gpa_met = gpa >= MIN_GPA
+        gpa_status = f"현재 GPA: {gpa:.2f} / 4.5 ({' 충족' if is_gpa_met else ' 미충족'})"
+
+        print(credit_status)
+        print(gpa_status)
+        
+        if is_credit_met and is_gpa_met:
+            print("\n 축하합니다! 주요 졸업 요건을 충족했습니다. (기타 요건 확인 필요)")
+        else:
+            print("\n 졸업 요건 충족을 위해 더 많은 학점 이수 및 학점 관리가 필요합니다.")
+            
+        common.pause()
+        
+    def view_grades(self):
+        """(기존) 성적 조회 시스템 (과목별 상세 성적)"""
+        common.clear_screen()
+        print(f"--- {self.info['name']} 학생의 상세 성적 조회 ---")
+        
+        if self.user_id not in data.grades or not data.grades[self.user_id]:
+            print("조회할 성적 정보가 없습니다."); common.pause(); return
+        
+        print("\n[과목별 성적]")
+        
+        # 성적 출력
+        for course_id, grade in data.grades[self.user_id].items():
+            if course_id in data.courses:
+                course_info = data.courses[course_id]
+                credits = course_info['credits']
+                score = common.GRADE_TO_SCORE.get(grade, 0.0)
+                
+                print(f"[{course_id}] {course_info['title']} - {credits}학점 (등급: {grade}, 점수: {score:.1f})")
+
+        # common.calculate_gpa 함수를 사용하여 최종 결과 표시
+        final_gpa, total_earned_credits = common.calculate_gpa(self.user_id)
+        
+        print("\n" + "=" * 30)
+        print(f"총 평점 평균 (GPA): {final_gpa:.2f}")
+        print(f"총 이수 학점: {total_earned_credits} 학점")
+        print("=" * 30)
+        
         common.pause()
