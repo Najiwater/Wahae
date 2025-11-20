@@ -40,7 +40,7 @@ def login(role):
         elif role == 'professor' and user_id in data.professors: user_name = data.professors[user_id]['name']
         elif role == 'admin' and user_id in data.admins: user_name = data.admins[user_id]['name']
         
-        print(f"\n✨ {user_name}님 ({user_id}) 환영합니다! ✨")
+        print(f"\n {user_name}님 ({user_id}) 환영합니다! ")
         common.pause()
         return user_id
     else:

@@ -32,10 +32,10 @@ def load_data(filename, default_value):
             return content
         except json.JSONDecodeError:
             # 파일 내용이 비어있거나 문법 오류가 있을 경우 처리
-            print(f"⚠️ {filename} 로드 실패: JSON 문법 오류 또는 파일 비어있음. 빈 데이터로 초기화합니다.")
+            print(f" {filename} 로드 실패: JSON 문법 오류 또는 파일 비어있음. 빈 데이터로 초기화합니다.")
             return default_value
         except Exception as e:
-            print(f"❌ {filename} 로드 중 예상치 못한 오류 발생 ({e}). 빈 데이터로 초기화합니다.")
+            print(f" {filename} 로드 중 예상치 못한 오류 발생 ({e}). 빈 데이터로 초기화합니다.")
             return default_value
     else:
         # 파일이 존재하지 않으면 기본값 반환
