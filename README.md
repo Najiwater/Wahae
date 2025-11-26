@@ -2,6 +2,7 @@
 
 # 🎓 3중 학사관리시스템
 Role-Based Academic Management System  
+![js](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
 ### 파이썬 기초 및 실습 – 기말 대체 프로젝트  
 **Team 와해(渦解)**
 
