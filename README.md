@@ -2,9 +2,8 @@
 
 # 전주대학교 파이썬 기초 및 실습 기말 팀프로젝트
 # 🎓 3중 학사관리시스템 
-**Python / OOP / JSON Based Academic Platform** 
-![js](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white) 
-![js](https://img.shields.io/badge/JSON-3776AB?style=flat&logo=json&logoColor=white) 
+**Python / JSON Based Academic Platform** 
+![js](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white) ![js](https://img.shields.io/badge/JSON-3776AB?style=flat&logo=json&logoColor=white) 
       
 </div>
 
