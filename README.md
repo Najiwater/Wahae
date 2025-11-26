@@ -3,13 +3,14 @@
 # 🎓 전주대학교 파이썬 기초 및 실습 기말 팀프로젝트 : 3중 학사관리시스템
       Role-Based Academic Management System  
       **Python / OOP / JSON Based Academic Platform** 
-      ![js](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white) ![js](https://img.shields.io/badge/Python-3776AB?style=flat&logo=json&logoColor=white) 
-##Team 와해(渦解)##
-   **팀원 : 나지수 임지후 정종빈 김재영 송제용 장현준 최혁**
+      ![js](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white) 
+      ![js](https://img.shields.io/badge/Python-3776AB?style=flat&logo=json&logoColor=white) 
+
 </div>
-
 ---
+##Team 와해(渦解)
 
+   **팀원 : 나지수 임지후 정종빈 김재영 송제용 장현준 최혁**
 # 📌 프로젝트 개요
 
 본 프로젝트는 **학생(Student)**, **교수(Professor)**, **행정직원(Admin)**  
