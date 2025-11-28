@@ -51,9 +51,22 @@ Python + JSON 데이터 구조를 활용하여
 - 기본 시스템 데이터 관리
 
 ## 🏗️ 시스템 구조
+'''
 
-![System Structure](assets/system_structure.png)
+academic_system/
+│
+├── main.py
+├── data.py
+│
+├── user_base.py
+├── student.py
+├── professor.py
+├── admin.py
+│
+├── unified_users.json
+└── login_users.json
 
+'''
 
 
 # 🔍 개발 진행 과정 (4주차 팀 활동 기록)
