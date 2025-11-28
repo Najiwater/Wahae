@@ -52,18 +52,7 @@ Python + JSON 데이터 구조를 활용하여
 
 ## 🏗️ 시스템 구조
 
-academic_system/
-│
-├── main.py
-├── data.py
-│
-├── user_base.py
-├── student.py
-├── professor.py
-├── admin.py
-│
-├── unified_users.json
-└── login_users.json
+![System Structure](assets/system_structure.png)
 
 
 
