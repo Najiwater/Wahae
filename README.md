@@ -65,7 +65,8 @@ academic_system/
 │
 ├── unified_users.json
 └── login_users.json
-
+```
+---
 
 # 🔍 개발 진행 과정 (4주차 팀 활동 기록)
 
