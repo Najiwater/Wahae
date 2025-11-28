@@ -52,6 +52,7 @@ Python + JSON 데이터 구조를 활용하여
 
 ## 🏗️ 시스템 구조
 
+```plaintext
 academic_system/
 │
 ├── main.py
@@ -64,7 +65,6 @@ academic_system/
 │
 ├── unified_users.json
 └── login_users.json
-
 
 
 # 🔍 개발 진행 과정 (4주차 팀 활동 기록)
