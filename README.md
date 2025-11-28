@@ -51,7 +51,6 @@ Python + JSON 데이터 구조를 활용하여
 - 기본 시스템 데이터 관리
 
 ## 🏗️ 시스템 구조
----
 
 academic_system/
 │
