@@ -51,7 +51,7 @@ Python + JSON 데이터 구조를 활용하여
 - 기본 시스템 데이터 관리
 
 ## 🏗️ 시스템 구조
-
+$
 academic_system/
 │
 ├─ main.py # 실행 파일 / 로그인 / JSON 연동
@@ -64,7 +64,7 @@ academic_system/
 │
 ├─ unified_users.json # 사용자 통합 JSON
 └─ courses.json (옵션) # 강의 데이터
-
+$
 ---
 # 🔍 개발 진행 과정 (4주차 팀 활동 기록)
 
