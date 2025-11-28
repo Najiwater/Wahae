@@ -54,16 +54,17 @@ Python + JSON 데이터 구조를 활용하여
 
 academic_system/
 │
-├─ main.py # 실행 파일 / 로그인 / JSON 연동
-├─ data.py # 전역 데이터 저장소
+├── main.py
+├── data.py
 │
-├─ user_base.py # User 부모 클래스
-├─ student.py # 학생 클래스 + 메뉴
-├─ professor.py # 교수 클래스 + 메뉴
-├─ admin.py # 행정직원 클래스 + 메뉴
+├── user_base.py
+├── student.py
+├── professor.py
+├── admin.py
 │
-├─ unified_users.json # 사용자 통합 JSON
-└─ courses.json (옵션) # 강의 데이터
+├── unified_users.json
+└── login_users.json
+
 
 
 # 🔍 개발 진행 과정 (4주차 팀 활동 기록)
