@@ -1,7 +1,7 @@
 <div align="center">
 
 # 전주대학교 파이썬 기초 및 실습 기말 팀프로젝트
-# 🎓 3중 학사관리시스템 
+# 🎓 1학년년 3중 학사관리시스템 
 **Python / JSON Based Academic Platform** 
 
 ![js](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white) ![js](https://img.shields.io/badge/JSON-3776AB?style=flat&logo=json&logoColor=white) 
@@ -33,22 +33,22 @@ Python + JSON 데이터 구조를 활용하여
 # 🗂️ 시스템 주요 기능 및 구
 
 ## 👨‍🎓 **학생(Student) 기능**
-- 수강신청 / 수강취소  
-- 시간표 조회  
-- 성적 조회  
+드-
 - 공지사항 열람  
-- 내 정보 수정  
+- 성적 조회  
+- 출결 현황  
+- 학적변동 신청  
 
 ## 👨‍🏫 **교수(Professor) 기능**
-- 담당 강의 목록 조회  
+- 강의 대시보드 
 - 수강생 명단 확인  
-- 성적 입력  
-- 공지사항 등록  
+- 성적 입력 / 수정 
 
 ## 🧑‍💼 **행정직원(Admin) 기능**
-- 강의 개설 / 삭제  
-- 전체 사용자 조회  
-- 기본 시스템 데이터 관리
+- 관리 대시보드 
+- 학생 명단관리
+- 학적 변동 승인
+- 공지사항 관리
 
 ## 🏗️ 시스템 구조
 
@@ -56,15 +56,13 @@ Python + JSON 데이터 구조를 활용하여
 academic_system/
 │
 ├── main.py
-├── data.py
+├── data.py├├── common_module.py
+├── student_najisoo.py
+├── professor_jungjongbin.py
+├── admin_imjihoo.py
 │
-├── user_base.py
-├── student.py
-├── professor.py
-├── admin.py
-│
-├── unified_users.json
-└── login_users.json
+├── academic_requests.json
+└── users.json
 ```
 ---
 
@@ -124,17 +122,8 @@ pyinstaller로 Exe 파일로 실행
 
 ## 📅 7,8주차 기말프로젝트 종료 (1211~1219)
 
-## 성능 · 테스트(시간부족으로 인해 미진행)
+완성 및 오류수정
 
-프로젝트 특성상 다음처럼 테스트 가능:
-
-JSON 로딩 시간 측정
-
-메뉴 기능 반복 호출 테스트
-
-공지사항/수강신청 대량 생성 스트레스 테스트
-
-(프로그램 완성 후 시간이 남을시 테스트 해볼 예정)
 
 <div align="center">
 
